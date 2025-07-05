@@ -15,8 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 #region DBConnection
-builder.Services.AddDbContext<LoginDbcontext>(option =>
+builder.Services.AddDbContext<LoginDbContext>(option =>
 option.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlDB")));
+
+builder.Services.AddDbContext<LoginAuthDbContext>(option =>
+option.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlAuthDB")));
+
 #endregion
 
 #region DI Repository
@@ -41,8 +45,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         IssuerSigningKey= new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     });
-
-
 #endregion
 
 var app = builder.Build();

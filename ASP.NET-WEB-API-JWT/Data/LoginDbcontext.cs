@@ -2,13 +2,11 @@
 
 namespace ASP.NET_WEB_API_JWT.Data
 {
-    public class LoginDbcontext : DbContext
+    public class LoginDbContext : DbContext
     {
-        public LoginDbcontext(DbContextOptions dbContextOptions):base(dbContextOptions) 
+        public LoginDbContext(DbContextOptions dbContextOptions):base(dbContextOptions) 
         { 
         
         }
-                    
-        
     }
 }
